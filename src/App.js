@@ -1,23 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import './styles/style.css';
-import { pictures } from './data';
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
 import { BsDot } from 'react-icons/bs';
+import { pictures } from './data';
 
 function App() {
   const [counter, setCounter] = useState(0);
   const [isMoving, setIsmoving] = useState(true);
-  const lastSlide = pictures.length - 1;
 
-  // const nextSlide = () => {
-  //   setCounter(counter + 1);
-  // };
-  // const prevSlide = () => {
-  //   if (counter < 0) {
-  //     setCounter(8);
-  //   }
-  //   setCounter(counter - 1);
-  // };
+  const lastSlide = pictures.length - 1;
 
   const nextSlide = () => {
     setCounter((counter) => {
@@ -25,10 +16,6 @@ function App() {
     });
   };
   const prevSlide = () => {
-    const lastSlide = pictures.length - 1;
-    // if (counter < 0) {
-    //   setCounter(lastSlide);
-    // }
     setCounter((counter) => {
       return counter - 1;
     });
@@ -48,7 +35,7 @@ function App() {
     if (isMoving) {
       interval = setInterval(() => {
         setCounter(counter + 1);
-      }, 1500);
+      }, 2000);
     }
     return () => clearInterval(interval);
   }, [counter, isMoving]);
